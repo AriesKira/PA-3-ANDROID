@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Senanas</string>
+    <string name="application_title_login_view">SENANAS</string>
+    <string name="email_edit_text_login_view">Email</string>
+    <string name="password_edit_text_login_view">Password</string>
+    <string name="login_button_login_view">Login</string>
 </resources>
