@@ -8,7 +8,7 @@ import retrofit2.http.GET
 class UserRepository(
     private val userService: UserService
 ) {
-    fun register(registerDto: ResponseRegisterDto): Call<ResponseRegisterDto> {
+    fun register(registerDto: RegisterDto): Call<ResponseRegisterDto> {
         return userService.register(registerDto)
     }
 

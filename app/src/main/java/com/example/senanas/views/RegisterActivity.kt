@@ -13,6 +13,7 @@ import com.example.senanas.R
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var userDataLayer: UserDataLayerSingleton
+    private lateinit var registerButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +24,12 @@ class RegisterActivity : AppCompatActivity() {
         userDataLayer.initViewModel()
 
         setContentView(R.layout.activity_register)
+        registerButton = findViewById(R.id.registerButton)
+        registerButton.setOnClickListener {
+            userDataLayer.getRegisterViewModel().test()
+        }
 
-        userDataLayer.getRegisterViewModel().test()
+
 
 
     }
