@@ -18,7 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="30dp"/>
+        android:textSize="30sp"/>
+
 
     <EditText
         android:id="@+id/email_edit_text_register_view"
@@ -29,6 +30,14 @@
         android:autofillHints="false"
         android:inputType="textEmailAddress" />
 
+    <TextView
+        android:id="@+id/email_error_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/emailNotValid"
+        android:textColor="@color/red"
+        android:visibility="invisible"/>
+
     <EditText
         android:id="@+id/firstname_edit_text_register_view"
         android:layout_marginTop="20dp"
@@ -38,6 +47,14 @@
         android:autofillHints="false"
         android:inputType="text" />
 
+    <TextView
+        android:id="@+id/firstname_error_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Le prenom est requis"
+        android:textColor="@color/red"
+        android:visibility="invisible"/>
+
     <EditText
         android:id="@+id/lastname_edit_text_register_view"
         android:layout_marginTop="20dp"
@@ -45,7 +62,17 @@
         android:layout_height="wrap_content"
         android:hint="@string/lastname"
         android:autofillHints="false"
-        android:inputType="text" />
+
+        android:inputType="text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/lastname_error_text_view"
+        android:layout_height="wrap_content"
+        android:text="Le nom de famille est requis"
+        android:textColor="@color/red"
+        android:visibility="invisible"/>
+
 
     <EditText
         android:id="@+id/password_edit_text_register_view"
@@ -55,6 +82,14 @@
         android:hint="@string/password_edit_text_login_view"
         android:autofillHints="false"
         android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/password_error_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Un mot de passe est requis"
+        android:textColor="@color/red"
+        android:visibility="invisible"/>
 
     <Button
         android:id="@+id/registerButton"

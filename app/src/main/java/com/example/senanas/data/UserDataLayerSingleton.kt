@@ -1,13 +1,8 @@
-package com.example.myfirstapp.data
+package com.example.senanas.data
 
-import android.content.Context
 import com.example.senanas.network.user.UserRepository
 import com.example.senanas.network.user.UserService
 import com.example.senanas.viewmodels.RegisterViewModel
-//import com.example.myfirstapp.model.TodoModel
-//import com.example.myfirstapp.network.TodoServices
-//import com.example.myfirstapp.network.TodosRepository
-//import com.example.myfirstapp.viewmodels.TodoViewModel
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -43,7 +38,7 @@ object UserDataLayerSingleton {
         registerViewModel = RegisterViewModel(
             UserRepository(
                 userService,
-            )
+            ),
         )
     }
 
