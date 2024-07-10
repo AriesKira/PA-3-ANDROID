@@ -4,4 +4,10 @@
     <string name="email_edit_text_login_view">Email</string>
     <string name="password_edit_text_login_view">Password</string>
     <string name="login_button_login_view">Login</string>
+    <string name="NotRegistered">Pas encore de compte ?</string>
+    <string name="Register">Inscription</string>
+    <string name="mail">Email</string>
+    <string name="firstname">Prenom</string>
+    <string name="lastname">Nom de famille</string>
+    <string name="toRegister">S\'inscrire</string>
 </resources>
