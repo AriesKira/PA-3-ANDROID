@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.senanas.model.RegisterDto
 import com.example.senanas.model.ResponseRegisterDto
 import com.example.senanas.network.user.UserRepository
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,7 +28,19 @@ class RegisterViewModel(private val userRepository: UserRepository) {
                     _registerResult.postValue(Result.success(response.body()!!))
                     println("Success: ${responseBody?.message}")
                 } else {
-                    println("Failed: ${response.errorBody()?.string()}")
+                    val errorBody = response.errorBody()?.string()
+                    val errorMessage = if (errorBody != null) {
+                        try {
+                            // Parse the error body to get the message
+                            val errorResponse = Gson().fromJson(errorBody, ResponseRegisterDto::class.java)
+                            errorResponse.message
+                        } catch (e: Exception) {
+                            response.message()
+                        }
+                    } else {
+                        response.message()
+                    }
+                    _registerResult.postValue(Result.failure(Exception(errorMessage)))
                 }
             }
 

@@ -60,6 +60,10 @@ class RegisterActivity : AppCompatActivity(),RedirectToLogin {
                         startActivity(intent)
                         finish()
                     }
+
+                    it.onFailure { exception ->
+                        Toast.makeText(this, "Inscription échouée : ${exception.message}", Toast.LENGTH_SHORT).show()
+                    }
                 })
                 userDataLayer.getRegisterViewModel().register(registerDto)
 
