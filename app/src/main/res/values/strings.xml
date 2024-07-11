@@ -12,4 +12,8 @@
     <string name="toRegister">S\'inscrire</string>
     <string name="emailNotValid">L\'adresse e-mail saisie n\'est pas valide.</string>
     <string name="passwordRequired">Un mot de passe est requis</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
