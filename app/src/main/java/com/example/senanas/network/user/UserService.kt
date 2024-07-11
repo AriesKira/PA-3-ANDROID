@@ -1,4 +1,6 @@
 package com.example.senanas.network.user
+import com.example.senanas.model.LoginDto
+import com.example.senanas.model.LoginResponseDto
 import com.example.senanas.model.RegisterDto
 import com.example.senanas.model.ResponseRegisterDto
 import retrofit2.Call
@@ -10,4 +12,7 @@ interface UserService {
 
     @POST("auth/signup")
     fun register(@Body registerDto: RegisterDto): Call<ResponseRegisterDto>
+
+    @POST("auth/signin")
+    fun login(@Body loginDto: LoginDto): Call<LoginResponseDto>
 }

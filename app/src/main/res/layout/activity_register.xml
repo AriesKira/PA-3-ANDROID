@@ -87,7 +87,7 @@
         android:id="@+id/password_error_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Un mot de passe est requis"
+        android:text="@string/passwordRequired"
         android:textColor="@color/red"
         android:visibility="invisible"/>
 

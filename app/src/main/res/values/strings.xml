@@ -11,4 +11,5 @@
     <string name="lastname">Nom de famille</string>
     <string name="toRegister">S\'inscrire</string>
     <string name="emailNotValid">L\'adresse e-mail saisie n\'est pas valide.</string>
+    <string name="passwordRequired">Un mot de passe est requis</string>
 </resources>
