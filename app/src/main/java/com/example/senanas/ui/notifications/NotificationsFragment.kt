@@ -1,17 +1,23 @@
 package com.example.senanas.ui.notifications
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.senanas.HomeActivity
+import com.example.senanas.data.UserDataLayerSingleton
 import com.example.senanas.databinding.FragmentNotificationsBinding
 
 class NotificationsFragment : Fragment() {
 
     private var _binding: FragmentNotificationsBinding? = null
+    private lateinit var userDataLayer: UserDataLayerSingleton
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -28,10 +34,32 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        //notificationsViewModel.text.observe(viewLifecycleOwner) {
+          //  textView.text = it
+        //}
+        val emailEditText: EditText = binding.emailEditTextProfileView
+        val lastnameEditText: EditText = binding.lastnameEditTextProfileView
+        val firstnameEditText: EditText = binding.firstnameEditTextProfileView
+
+        userDataLayer = UserDataLayerSingleton
+        userDataLayer.createRetrofitClient()
+        userDataLayer.createTodoService()
+        userDataLayer.initProfileViewModel()
+        userDataLayer.getProfileViewModel().getUserInfo("BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidXNlckBnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTcyMTE0MjEyOH0.WNA7sGEjlF-f0uTZa1PUIrBLZPrjEdDLJ61UXAeCDyU")
+        userDataLayer.getProfileViewModel().userData.observe(viewLifecycleOwner) { result ->
+            result.fold(
+                onSuccess = {
+                    emailEditText.setText(it?.email)
+                    firstnameEditText.setText(it?.firstname)
+                    lastnameEditText.setText(it?.lastname)
+                },
+                onFailure = { throwable ->
+                    println("Login failed: ${throwable.message}")
+                }
+            )
         }
+
+
         return root
     }
 
