@@ -5,6 +5,7 @@ import com.example.senanas.model.RegisterDto
 import com.example.senanas.model.ResponseRegisterDto
 import com.example.senanas.model.LoginDto
 import com.example.senanas.model.LoginResponseDto
+import com.example.senanas.model.UpdateUserDto
 import okhttp3.ResponseBody
 import retrofit2.Call
 
@@ -17,6 +18,10 @@ class UserRepository(
 
     fun login(loginDto: LoginDto): Call<LoginResponseDto> {
         return userService.login(loginDto)
+    }
+
+    fun updateUser(token:String,updateUserDto: UpdateUserDto): Call<UpdateUserDto> {
+        return userService.updateUser(token,updateUserDto)
     }
 
     fun getUserInfo(token:String): Call<GetUserDto> {

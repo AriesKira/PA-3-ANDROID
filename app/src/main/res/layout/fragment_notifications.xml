@@ -32,4 +32,11 @@
         android:hint="@string/lastname"
         android:autofillHints="false"
         android:inputType="text" />
+
+    <Button
+        android:id="@+id/save_button_profile_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:layout_gravity="end"/>
 </androidx.appcompat.widget.LinearLayoutCompat>

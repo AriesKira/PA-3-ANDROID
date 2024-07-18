@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.senanas.HomeActivity
 import com.example.senanas.data.UserDataLayerSingleton
 import com.example.senanas.databinding.FragmentNotificationsBinding
+import com.example.senanas.model.UpdateUserDto
 
 class NotificationsFragment : Fragment() {
 
@@ -40,6 +41,7 @@ class NotificationsFragment : Fragment() {
         val emailEditText: EditText = binding.emailEditTextProfileView
         val lastnameEditText: EditText = binding.lastnameEditTextProfileView
         val firstnameEditText: EditText = binding.firstnameEditTextProfileView
+        val saveButton = binding.saveButtonProfileView
 
         userDataLayer = UserDataLayerSingleton
         userDataLayer.createRetrofitClient()
@@ -57,6 +59,11 @@ class NotificationsFragment : Fragment() {
                     println("Login failed: ${throwable.message}")
                 }
             )
+        }
+
+        saveButton.setOnClickListener {
+            val updateUserDto = UpdateUserDto(firstname = firstnameEditText.text.toString(), lastname = lastnameEditText.text.toString(), email = emailEditText.text.toString())
+            userDataLayer.getProfileViewModel().updateUserInfo("BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidXNlckBnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTcyMTE0MjEyOH0.WNA7sGEjlF-f0uTZa1PUIrBLZPrjEdDLJ61UXAeCDyU",updateUserDto)
         }
 
 
