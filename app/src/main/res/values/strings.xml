@@ -12,4 +12,16 @@
     <string name="toRegister">S\'inscrire</string>
     <string name="emailNotValid">L\'adresse e-mail saisie n\'est pas valide.</string>
     <string name="passwordRequired">Un mot de passe est requis</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Profil</string>
+    <string name="save">Sauvegarder</string>
+    <string name="category_name">Category Name</string>
+    <string name="home">Acceuil</string>
+    <string name="profil">Profil</string>
+    <string name="tickets">Mes tickets</string>
+    <string name="code_postale">Code postale\n</string>
+    <string name="city">ville\n</string>
+    <string name="adresse">adresse\n</string>
 </resources>

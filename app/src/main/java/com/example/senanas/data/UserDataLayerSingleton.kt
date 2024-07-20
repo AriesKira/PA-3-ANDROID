@@ -2,7 +2,9 @@ package com.example.senanas.data
 
 import com.example.senanas.network.user.UserRepository
 import com.example.senanas.network.user.UserService
+import com.example.senanas.viewmodels.HomeViewModel
 import com.example.senanas.viewmodels.LoginViewModel
+import com.example.senanas.viewmodels.ProfileViewModel
 import com.example.senanas.viewmodels.RegisterViewModel
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
@@ -14,10 +16,15 @@ object UserDataLayerSingleton {
     private lateinit var userService: UserService
     private lateinit var registerViewModel: RegisterViewModel
     private lateinit var loginViewModel: LoginViewModel
+    private lateinit var profileViewModel: ProfileViewModel
+    private lateinit var homeViewModel: HomeViewModel
 
 
     fun getRegisterViewModel() = registerViewModel
     fun getLoginViewModelViewModel() = loginViewModel
+
+    fun getProfileViewModel() = profileViewModel
+    fun getHomeViewModel() = homeViewModel
 
 
     // Setup HTTP client + services
@@ -47,6 +54,22 @@ object UserDataLayerSingleton {
 
     fun initLoginViewModel() {
         loginViewModel = LoginViewModel(
+            UserRepository(
+                userService,
+            ),
+        )
+    }
+
+    fun initProfileViewModel() {
+        profileViewModel = ProfileViewModel(
+            UserRepository(
+                userService,
+            ),
+        )
+    }
+
+    fun initHomeViewModel() {
+        homeViewModel = HomeViewModel(
             UserRepository(
                 userService,
             ),

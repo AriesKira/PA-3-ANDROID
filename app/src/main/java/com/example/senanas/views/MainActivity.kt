@@ -13,7 +13,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
+import com.example.senanas.HomeActivity
+import com.example.senanas.ProfileActivity
 import com.example.senanas.R
+import com.example.senanas.TestActivity
 import com.example.senanas.data.UserDataLayerSingleton
 import com.example.senanas.model.LoginDto
 import com.example.senanas.model.RegisterDto
@@ -44,6 +47,8 @@ class MainActivity : AppCompatActivity() {
                     val token = loginResponse?.token
                     val user = loginResponse?.user
                     println(loginResponse)
+                    val intent = Intent(this, TestActivity::class.java)
+                    startActivity(intent)
                 },
                 onFailure = { throwable ->
                     println("Login failed: ${throwable.message}")
