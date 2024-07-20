@@ -12,12 +12,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.senanas.HomeActivity
 import com.example.senanas.data.UserDataLayerSingleton
-import com.example.senanas.databinding.FragmentNotificationsBinding
+import com.example.senanas.databinding.FragmentHomeBinding
 import com.example.senanas.model.UpdateUserDto
 
 class NotificationsFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
+    private var _binding:FragmentHomeBinding? = null
     private lateinit var userDataLayer: UserDataLayerSingleton
 
     // This property is only valid between onCreateView and
@@ -32,16 +32,13 @@ class NotificationsFragment : Fragment() {
         val notificationsViewModel =
             ViewModelProvider(this).get(NotificationsViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        //binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         //notificationsViewModel.text.observe(viewLifecycleOwner) {
           //  textView.text = it
         //}
-        val emailEditText: EditText = binding.emailEditTextProfileView
-        val lastnameEditText: EditText = binding.lastnameEditTextProfileView
-        val firstnameEditText: EditText = binding.firstnameEditTextProfileView
-        val saveButton = binding.saveButtonProfileView
+
 
         userDataLayer = UserDataLayerSingleton
         userDataLayer.createRetrofitClient()
@@ -51,9 +48,7 @@ class NotificationsFragment : Fragment() {
         userDataLayer.getProfileViewModel().userData.observe(viewLifecycleOwner) { result ->
             result.fold(
                 onSuccess = {
-                    emailEditText.setText(it?.email)
-                    firstnameEditText.setText(it?.firstname)
-                    lastnameEditText.setText(it?.lastname)
+
                 },
                 onFailure = { throwable ->
                     println("Login failed: ${throwable.message}")
@@ -61,10 +56,10 @@ class NotificationsFragment : Fragment() {
             )
         }
 
-        saveButton.setOnClickListener {
-            val updateUserDto = UpdateUserDto(firstname = firstnameEditText.text.toString(), lastname = lastnameEditText.text.toString(), email = emailEditText.text.toString())
-            userDataLayer.getProfileViewModel().updateUserInfo("BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidXNlckBnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTcyMTE0MjEyOH0.WNA7sGEjlF-f0uTZa1PUIrBLZPrjEdDLJ61UXAeCDyU",updateUserDto)
-        }
+        //saveButton.setOnClickListener {
+            //val updateUserDto = UpdateUserDto(firstname = firstnameEditText.text.toString(), lastname = lastnameEditText.text.toString(), email = emailEditText.text.toString())
+            //userDataLayer.getProfileViewModel().updateUserInfo("BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidXNlckBnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTcyMTE0MjEyOH0.WNA7sGEjlF-f0uTZa1PUIrBLZPrjEdDLJ61UXAeCDyU",updateUserDto)
+        //}
 
 
         return root

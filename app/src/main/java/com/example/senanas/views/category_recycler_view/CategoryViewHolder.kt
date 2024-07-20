@@ -10,7 +10,7 @@ class CategoryViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
     private var nameTextView : TextView
 
     init {
-        this.nameTextView = itemView.findViewById(R.id.textViewCategoryName)
+        this.nameTextView = itemView.findViewById(R.id.categoryName)
     }
 
     fun bind(category: CategoryDto) {

@@ -51,7 +51,6 @@ class HomeFragment : Fragment() {
                 categories?.let {
                     val categoriesAdapter = CategoryListAdapter(it)
                     recyclerViewCategories.setAdapter(categoriesAdapter)
-
                     val linearLayoutManager = LinearLayoutManager(context)
                     linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL)
                     recyclerViewCategories.layoutManager = linearLayoutManager

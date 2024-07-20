@@ -25,6 +25,15 @@
         android:theme="@style/Theme.Senanas"
         tools:targetApi="31">
         <activity
+            android:name=".TicketActivityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TestActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomeActivity"
             android:exported="false"
             android:label="@string/title_activity_home" />
