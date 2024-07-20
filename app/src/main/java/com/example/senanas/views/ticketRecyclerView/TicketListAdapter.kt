@@ -25,7 +25,7 @@ class TicketListAdapter(
         val currentTicket = this.ticketList[position] // Get the data at the right position
         holder.bind(currentTicket)
         holder.itemView.setOnClickListener {
-            navigateClickHandler.navigate()
+            navigateClickHandler.navigate(id = currentTicket.id)
         }
 
     }

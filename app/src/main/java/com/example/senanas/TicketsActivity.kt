@@ -6,11 +6,9 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.senanas.data.TicketDataLayerSingleton
-import com.example.senanas.views.category_recycler_view.CategoryListAdapter
 import com.example.senanas.views.ticketRecyclerView.TicketListAdapter
 
 class TicketsActivity : AppCompatActivity(),NavigateOnClickLListener {
@@ -31,9 +29,9 @@ class TicketsActivity : AppCompatActivity(),NavigateOnClickLListener {
         initViewModel()
         getToken()
 
-        ticketDataLayerSingleton.getTicketListiewModel().getTicket(token!!)
+        ticketDataLayerSingleton.getTicketListViewModel().getTicket(token!!)
 
-        ticketDataLayerSingleton.getTicketListiewModel().tickets.observe(this, Observer { result ->
+        ticketDataLayerSingleton.getTicketListViewModel().tickets.observe(this, Observer { result ->
           result?.onSuccess { ticket ->
               val ticketListAdapter = TicketListAdapter(ticket!!,this)
               ticketRecyclerView.setAdapter(ticketListAdapter)
@@ -74,8 +72,9 @@ class TicketsActivity : AppCompatActivity(),NavigateOnClickLListener {
         return token!!
     }
 
-    override fun navigate() {
+    override fun navigate(id: Int?) {
         Intent(this, DetailTicketActivity::class.java).also {
+            it.putExtra("ID_TICKET",id)
             startActivity(it)
         }
     }

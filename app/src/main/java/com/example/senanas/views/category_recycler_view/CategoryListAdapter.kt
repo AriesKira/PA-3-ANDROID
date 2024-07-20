@@ -25,7 +25,7 @@ class CategoryListAdapter(
         val currentCategory = this.categoryList[position] // Get the data at the right position
         holder.bind(currentCategory)
         holder.itemView.setOnClickListener {
-            todoClickHandler.navigate()
+            todoClickHandler.navigate(null)
         }
 
     }

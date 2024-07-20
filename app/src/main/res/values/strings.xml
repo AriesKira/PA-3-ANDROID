@@ -30,4 +30,5 @@
     <string name="zipcode_required">Code postal requis ou invalid</string>
     <string name="city_required">adresse requise\n</string>
     <string name="sendTicket">Envoyer le ticket</string>
+    <string name="chat">chat</string>
 </resources>

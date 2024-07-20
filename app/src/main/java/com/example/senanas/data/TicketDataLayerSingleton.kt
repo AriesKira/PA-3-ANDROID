@@ -2,6 +2,7 @@ package com.example.senanas.data
 
 import com.example.senanas.network.user.TicketRepository
 import com.example.senanas.network.user.TicketService
+import com.example.senanas.viewmodels.DetailTicketViewModel
 import com.example.senanas.viewmodels.TicketListViewModel
 import com.example.senanas.viewmodels.TicketViewModel
 import com.google.gson.GsonBuilder
@@ -13,8 +14,10 @@ object TicketDataLayerSingleton {
     private lateinit var ticketService: TicketService
     private lateinit var ticketViewModel: TicketViewModel
     private lateinit var ticketListViewModel: TicketListViewModel
+    private lateinit var detailTicketViewModel: DetailTicketViewModel
     fun getTicketViewModel() = ticketViewModel
-    fun getTicketListiewModel() = ticketListViewModel
+    fun getTicketListViewModel() = ticketListViewModel
+    fun getDetailTicketListViewModel() = detailTicketViewModel
 
     fun createRetrofitClient() {
         val gsonConverter =
@@ -44,6 +47,14 @@ object TicketDataLayerSingleton {
 
     fun initTicketListViewModel() {
         ticketListViewModel = TicketListViewModel(
+            TicketRepository(
+                ticketService,
+            ),
+        )
+    }
+
+    fun initDetailTicketListViewModel() {
+        detailTicketViewModel = DetailTicketViewModel(
             TicketRepository(
                 ticketService,
             ),
