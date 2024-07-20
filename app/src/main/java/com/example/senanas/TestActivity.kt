@@ -47,7 +47,7 @@ class TestActivity : AppCompatActivity(),TodoOnClickLListener {
     }
 
     override fun displayTodoDetail() {
-        Intent(this, CreateTicketActivity::class.java).also {
+        Intent(this, TicketActivityActivity::class.java).also {
             startActivity(it)
         }
     }
