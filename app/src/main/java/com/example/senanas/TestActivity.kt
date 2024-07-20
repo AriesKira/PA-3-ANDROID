@@ -2,17 +2,15 @@ package com.example.senanas
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.senanas.data.UserDataLayerSingleton
 import com.example.senanas.views.category_recycler_view.CategoryListAdapter
 
-class TestActivity : AppCompatActivity(),TodoOnClickLListener {
+class TestActivity : AppCompatActivity(),NavigateOnClickLListener {
     private lateinit var userDataLayer: UserDataLayerSingleton
     private lateinit var recyclerViewCategories: RecyclerView
     private lateinit var profileButton: Button
@@ -55,13 +53,14 @@ class TestActivity : AppCompatActivity(),TodoOnClickLListener {
 
     }
 
-    override fun displayTodoDetail() {
+    override fun navigate() {
         Intent(this, TicketActivityActivity::class.java).also {
             startActivity(it)
         }
     }
 }
 
-interface TodoOnClickLListener {
-    fun displayTodoDetail()
+
+interface NavigateOnClickLListener {
+    fun navigate()
 }
