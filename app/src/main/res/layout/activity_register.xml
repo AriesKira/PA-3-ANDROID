@@ -51,7 +51,7 @@
         android:id="@+id/firstname_error_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Le prenom est requis"
+        android:text="@string/firstname_required"
         android:textColor="@color/red"
         android:visibility="invisible"/>
 
@@ -69,7 +69,7 @@
         android:layout_width="match_parent"
         android:id="@+id/lastname_error_text_view"
         android:layout_height="wrap_content"
-        android:text="Le nom de famille est requis"
+        android:text="@string/lastname_required"
         android:textColor="@color/red"
         android:visibility="invisible"/>
 
@@ -82,7 +82,6 @@
         android:hint="@string/password_edit_text_login_view"
         android:autofillHints="false"
         android:inputType="textPassword" />
-
     <TextView
         android:id="@+id/password_error_text_view"
         android:layout_width="match_parent"

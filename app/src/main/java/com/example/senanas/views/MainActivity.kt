@@ -1,6 +1,7 @@
 package com.example.senanas.views
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -47,6 +48,10 @@ class MainActivity : AppCompatActivity() {
                     val token = loginResponse?.token
                     val user = loginResponse?.user
                     println(loginResponse)
+                    val sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.putString("token", "BEARER ${loginResponse!!.token}")
+                    editor.apply()
                     val intent = Intent(this, TestActivity::class.java)
                     startActivity(intent)
                 },
