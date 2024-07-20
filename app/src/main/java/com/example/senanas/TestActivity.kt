@@ -53,7 +53,7 @@ class TestActivity : AppCompatActivity(),NavigateOnClickLListener {
 
     }
 
-    override fun navigate() {
+    override fun navigate(id:Int?) {
         Intent(this, TicketActivityActivity::class.java).also {
             startActivity(it)
         }
@@ -62,5 +62,5 @@ class TestActivity : AppCompatActivity(),NavigateOnClickLListener {
 
 
 interface NavigateOnClickLListener {
-    fun navigate()
+    fun navigate(id:Int?)
 }
