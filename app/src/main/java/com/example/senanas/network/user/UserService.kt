@@ -1,4 +1,5 @@
 package com.example.senanas.network.user
+import com.example.senanas.model.CategoryDto
 import com.example.senanas.model.GetUserDto
 import com.example.senanas.model.LoginDto
 import com.example.senanas.model.LoginResponseDto
@@ -26,4 +27,7 @@ interface UserService {
 
     @GET("auth/me")
     fun getInfoUser(@Header("Authorization") token: String): Call<GetUserDto>
+
+    @GET("materials/categories")
+    fun getCategory(@Header("Authorization") token: String): Call<List<CategoryDto>>
 }

@@ -1,5 +1,6 @@
 package com.example.senanas.network.user
 //import com.example.myfirstapp.model.UserDto
+import com.example.senanas.model.CategoryDto
 import com.example.senanas.model.GetUserDto
 import com.example.senanas.model.RegisterDto
 import com.example.senanas.model.ResponseRegisterDto
@@ -26,6 +27,10 @@ class UserRepository(
 
     fun getUserInfo(token:String): Call<GetUserDto> {
         return userService.getInfoUser(token)
+    }
+
+    fun getCategory(token:String): Call<List<CategoryDto>> {
+        return userService.getCategory(token)
     }
 
 }
