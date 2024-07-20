@@ -34,6 +34,7 @@ class ProfileViewModel(private val userRepository: UserRepository) {
     }
 
     fun updateUserInfo(token:String,updateUserDto: UpdateUserDto) {
+        println(updateUserDto)
         val call = userRepository.updateUser(token,updateUserDto)
         call.enqueue(object:Callback<UpdateUserDto>{
             override fun onResponse(p0: Call<UpdateUserDto>, p1: Response<UpdateUserDto>) {
@@ -46,7 +47,7 @@ class ProfileViewModel(private val userRepository: UserRepository) {
             }
 
             override fun onFailure(p0: Call<UpdateUserDto>, p1: Throwable) {
-                TODO("Not yet implemented")
+
             }
 
         })

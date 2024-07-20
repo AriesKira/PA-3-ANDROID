@@ -24,4 +24,9 @@
     <string name="code_postale">Code postale\n</string>
     <string name="city">ville\n</string>
     <string name="adresse">adresse\n</string>
+    <string name="lastname_required">Le nom de famille est requis</string>
+    <string name="firstname_required">Le prenom est requis</string>
+    <string name="address_required">Adresse requise</string>
+    <string name="zipcode_required">Code postal requis ou invalid</string>
+    <string name="city_required">adresse requise\n</string>
 </resources>

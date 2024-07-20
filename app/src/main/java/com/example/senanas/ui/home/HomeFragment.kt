@@ -49,13 +49,6 @@ class HomeFragment : Fragment() {
         userDataLayer.getHomeViewModel().categories.observe(viewLifecycleOwner, Observer { result ->
             result.onSuccess { categories ->
                 categories?.let {
-                    val categoriesAdapter = CategoryListAdapter(it)
-                    recyclerViewCategories.setAdapter(categoriesAdapter)
-                    val linearLayoutManager = LinearLayoutManager(context)
-                    linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL)
-                    recyclerViewCategories.layoutManager = linearLayoutManager
-
-
 
                 }
             }

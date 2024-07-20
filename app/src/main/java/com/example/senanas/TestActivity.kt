@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.senanas.data.UserDataLayerSingleton
 import com.example.senanas.views.category_recycler_view.CategoryListAdapter
 
-class TestActivity : AppCompatActivity() {
+class TestActivity : AppCompatActivity(),TodoOnClickLListener {
     private lateinit var userDataLayer: UserDataLayerSingleton
     private lateinit var recyclerViewCategories: RecyclerView
     private lateinit var profileButton: Button
@@ -35,7 +35,7 @@ class TestActivity : AppCompatActivity() {
 
             result.onSuccess { categories ->
                 categories?.let {
-                    val categoriesAdapter = CategoryListAdapter(it)
+                    val categoriesAdapter = CategoryListAdapter(it,this)
                     recyclerViewCategories.setAdapter(categoriesAdapter)
                     val gridLayoutManager = GridLayoutManager(this, 2)
                     recyclerViewCategories.layoutManager = gridLayoutManager
@@ -45,4 +45,14 @@ class TestActivity : AppCompatActivity() {
 
 
     }
+
+    override fun displayTodoDetail() {
+        Intent(this, CreateTicketActivity::class.java).also {
+            startActivity(it)
+        }
+    }
+}
+
+interface TodoOnClickLListener {
+    fun displayTodoDetail()
 }

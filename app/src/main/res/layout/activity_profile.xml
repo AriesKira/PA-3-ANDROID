@@ -18,14 +18,23 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical">
+
             <EditText
                 android:id="@+id/email_edit_text_profile_view"
-                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/mail"
                 android:autofillHints="false"
                 android:inputType="textEmailAddress" />
+            <TextView
+                android:id="@+id/email_text_view_profile_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/red"
+                android:visibility="invisible"
+                android:text="@string/emailNotValid"/>
+
             <EditText
                 android:id="@+id/firstname_edit_text_profile_view"
                 android:layout_marginTop="20dp"
@@ -34,6 +43,16 @@
                 android:hint="@string/firstname"
                 android:autofillHints="false"
                 android:inputType="text" />
+            <TextView
+                android:id="@+id/firstname_text_view_profile_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/red"
+                android:visibility="invisible"
+                android:text="@string/firstname_required"/>
+
+
             <EditText
                 android:id="@+id/lastname_edit_text_profile_view"
                 android:layout_marginTop="20dp"
@@ -42,22 +61,37 @@
                 android:hint="@string/lastname"
                 android:autofillHints="false"
                 android:inputType="text" />
+            <TextView
+                android:id="@+id/lastname_text_view_profile_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/red"
+                android:visibility="invisible"
+                android:text="@string/lastname_required"/>
+
+
+
             <EditText
-                android:id="@+id/adresse_edit_text_profile_view"
+                android:id="@+id/address_edit_text_profile_view"
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/adresse"
                 android:autofillHints="false"
                 android:inputType="text" />
-            <EditText
-                android:id="@+id/city_edit_text_profile_view"
+            <TextView
+                android:id="@+id/address_text_view_profile_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/city"
-                android:autofillHints="false"
-                android:inputType="text" />
+                android:textColor="@color/red"
+                android:visibility="invisible"
+                android:text="@string/address_required"/>
+
+
+
+
             <EditText
                 android:id="@+id/zipcode_edit_text_profile_view"
                 android:layout_marginTop="20dp"
@@ -66,6 +100,31 @@
                 android:hint="@string/code_postale"
                 android:autofillHints="false"
                 android:inputType="text" />
+            <TextView
+                android:id="@+id/zipcode_text_view_profile_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/red"
+                android:visibility="invisible"
+                android:text="@string/zipcode_required"/>
+
+            <EditText
+                android:id="@+id/city_edit_text_profile_view"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/city"
+                android:autofillHints="false"
+                android:inputType="text" />
+            <TextView
+                android:id="@+id/city_text_view_profile_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/red"
+                android:text="@string/city_required"
+                android:visibility="invisible"/>
 
             <Button
                 android:id="@+id/save_button_profile_view"

@@ -4,10 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.senanas.R
+import com.example.senanas.TodoOnClickLListener
 import com.example.senanas.model.CategoryDto
 
 class CategoryListAdapter(
     var categoryList: List<CategoryDto>,
+    private val todoClickHandler: TodoOnClickLListener
 ): RecyclerView.Adapter<CategoryViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val categoryView = LayoutInflater.from(parent.context)
@@ -22,6 +24,10 @@ class CategoryListAdapter(
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         val currentCategory = this.categoryList[position] // Get the data at the right position
         holder.bind(currentCategory)
+        holder.itemView.setOnClickListener {
+            todoClickHandler.displayTodoDetail()
+        }
+
     }
 
 }
