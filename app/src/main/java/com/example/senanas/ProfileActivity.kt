@@ -54,6 +54,7 @@ class ProfileActivity : AppCompatActivity() {
 
         val saveButton: Button = this.findViewById(R.id.save_button_profile_view)
         val homeButton:Button = this.findViewById(R.id.homeButtonFromProfile)
+        val myTicketButton:Button = this.findViewById(R.id.ticketButtonFromProfile)
 
 
          errorEmailTextView = this.findViewById(R.id.email_text_view_profile_view)
@@ -108,6 +109,11 @@ class ProfileActivity : AppCompatActivity() {
 
         homeButton.setOnClickListener {
             val intent = Intent(this, TestActivity::class.java)
+            startActivity(intent)
+        }
+
+        myTicketButton.setOnClickListener {
+            val intent = Intent(this, TicketsActivity::class.java)
             startActivity(intent)
         }
     }
