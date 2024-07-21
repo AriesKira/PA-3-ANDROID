@@ -25,7 +25,7 @@ object TicketDataLayerSingleton {
                 GsonBuilder().create()
             )
         retrofitClient = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:3000/")
+            .baseUrl("http://149.202.46.116:3000/")
             .addConverterFactory(gsonConverter)
             .build()
     }
