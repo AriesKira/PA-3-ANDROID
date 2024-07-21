@@ -17,6 +17,14 @@ class TicketViewModel(private val ticketRepository: TicketRepository) {
         call.enqueue(object : Callback<ResponseRegisterDto> {
 
             override fun onResponse(p0: Call<ResponseRegisterDto>, p1: Response<ResponseRegisterDto>) {
+                if(p1.isSuccessful){
+                    val data = p1.body()
+                    data?.let {
+                        _createTicketResult.postValue(Result.success(data))
+                    }
+
+                }
+
             }
 
             override fun onFailure(p0: Call<ResponseRegisterDto>, p1: Throwable) {

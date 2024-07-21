@@ -29,7 +29,16 @@ class TicketActivityActivity : AppCompatActivity() {
         getToken()
 
 
-
+        ticketDataLayerSingleton.getTicketViewModel().createTicketResult.observe(this) { result ->
+            val data = result.getOrNull()
+            data?.let { responseRegisterDto ->
+                val id = responseRegisterDto.message.toInt()
+                Intent(this, DetailTicketActivity::class.java).also { intent ->
+                    intent.putExtra("ID_TICKET",id)
+                    startActivity(intent)
+                }
+            }
+        }
 
 
         homeButton.setOnClickListener {
@@ -38,10 +47,11 @@ class TicketActivityActivity : AppCompatActivity() {
         }
 
         sendTicketButton.setOnClickListener {
-            println("FIRE")
             val data = CreateTicketDto(title = titleEditText.text.toString(), description = descriptionEditText.text.toString())
             ticketDataLayerSingleton.getTicketViewModel().createTicket(token!!,data)
         }
+
+
     }
 
 

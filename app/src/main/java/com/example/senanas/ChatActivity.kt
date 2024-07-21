@@ -47,7 +47,10 @@ class ChatActivity : AppCompatActivity() {
                     chatRecyclerView.layoutManager = linearLayoutManager
 
                     chatRecyclerView.post {
-                        chatRecyclerView.smoothScrollToPosition(chatViewListAdapter.itemCount - 1)
+                        if(chatViewListAdapter.itemCount > 0) {
+                            chatRecyclerView.scrollToPosition(chatViewListAdapter.itemCount - 1)
+                        }
+
                     }
 
                 }

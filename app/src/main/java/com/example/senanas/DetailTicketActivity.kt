@@ -39,7 +39,9 @@ class DetailTicketActivity : AppCompatActivity() {
         initNavbar()
 
         if (this.intent.hasExtra("ID_TICKET")) {
+
             val id = intent.getIntExtra("ID_TICKET", -1)
+            println(id)
             ticketDataLayerSingleton.getDetailTicketListViewModel().getDetailTicket(token!!,id)
 
             ticketDataLayerSingleton.getDetailTicketListViewModel().detailTicket.observe(this,
