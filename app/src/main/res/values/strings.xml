@@ -31,4 +31,6 @@
     <string name="city_required">adresse requise\n</string>
     <string name="sendTicket">Envoyer le ticket</string>
     <string name="chat">chat</string>
+    <string name="refresh">Actualiser</string>
+    <string name="envoyer">Envoyer</string>
 </resources>
