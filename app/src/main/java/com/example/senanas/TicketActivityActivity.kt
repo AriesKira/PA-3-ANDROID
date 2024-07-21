@@ -38,7 +38,6 @@ class TicketActivityActivity : AppCompatActivity() {
         }
 
         sendTicketButton.setOnClickListener {
-            println("FIRE")
             val data = CreateTicketDto(title = titleEditText.text.toString(), description = descriptionEditText.text.toString())
             ticketDataLayerSingleton.getTicketViewModel().createTicket(token!!,data)
         }

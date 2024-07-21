@@ -47,7 +47,12 @@ class ChatActivity : AppCompatActivity() {
                     chatRecyclerView.layoutManager = linearLayoutManager
 
                     chatRecyclerView.post {
-                        chatRecyclerView.smoothScrollToPosition(chatViewListAdapter.itemCount - 1)
+                        chatRecyclerView.adapter?.let {
+                            if(it.itemCount > 0) {
+                                chatRecyclerView.smoothScrollToPosition(chatViewListAdapter.itemCount - 1)
+                            }
+                        }
+
                     }
 
                 }
@@ -58,7 +63,13 @@ class ChatActivity : AppCompatActivity() {
                     chatDataLayerSingleton.getChatViewModel().getChat(token!!,chatId)
                     messageEditText.setText("")
                     chatRecyclerView.post {
-                        chatRecyclerView.adapter?.let { chatRecyclerView.scrollToPosition(it.itemCount -1 ) }
+
+                        chatRecyclerView.adapter?.let {
+                            if(it.itemCount > 0) {
+                                chatRecyclerView.scrollToPosition(it.itemCount -1 )
+                            }
+
+                        }
                     }
                 }
             }

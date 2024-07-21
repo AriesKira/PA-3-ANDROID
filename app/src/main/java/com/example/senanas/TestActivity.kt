@@ -1,5 +1,6 @@
 package com.example.senanas
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -15,18 +16,25 @@ class TestActivity : AppCompatActivity(),NavigateOnClickLListener {
     private lateinit var recyclerViewCategories: RecyclerView
     private lateinit var profileButton: Button
     private lateinit var ticketButton: Button
+
+    private var token:String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
+
+        getToken()
 
         userDataLayer = UserDataLayerSingleton
         userDataLayer.createRetrofitClient()
         userDataLayer.createTodoService()
         userDataLayer.initHomeViewModel()
-        userDataLayer.getHomeViewModel().getCategories("BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoidXNlckBnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTcyMTE0MjEyOH0.WNA7sGEjlF-f0uTZa1PUIrBLZPrjEdDLJ61UXAeCDyU")
+        userDataLayer.getHomeViewModel().getCategories(token!!)
         recyclerViewCategories = findViewById(R.id.recyclerViewCategories2)
         profileButton = this.findViewById(R.id.profileButton)
         ticketButton = this.findViewById(R.id.ticketButton)
+
+
 
         profileButton.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
@@ -51,6 +59,12 @@ class TestActivity : AppCompatActivity(),NavigateOnClickLListener {
         })
 
 
+    }
+
+    private fun getToken():String {
+        val sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+        token = sharedPreferences.getString("token", "DefaultName")
+        return token!!
     }
 
     override fun navigate(id:Int?) {
