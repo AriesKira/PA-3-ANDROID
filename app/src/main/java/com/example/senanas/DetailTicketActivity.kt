@@ -23,6 +23,8 @@ class DetailTicketActivity : AppCompatActivity() {
     private lateinit var titleTextView: TextView
     private lateinit var descriptionTextView: TextView
     private lateinit var statusTextView: TextView
+    private lateinit var chatButton: Button
+    private var chatId:Int? = null
 
     private var token:String? = null
 
@@ -47,6 +49,7 @@ class DetailTicketActivity : AppCompatActivity() {
                             titleTextView.text = it.title
                             descriptionTextView.text = it.description
                             statusTextView.text = "status : ${it.status}"
+                            chatId = it.chatId
                         }
                     }
 
@@ -54,6 +57,15 @@ class DetailTicketActivity : AppCompatActivity() {
                         Toast.makeText(this, "Une erreur est survenue", Toast.LENGTH_SHORT).show()
                     }
                 })
+
+            chatButton.setOnClickListener {
+                if(chatId != null) {
+                    val intent = Intent(this, ChatActivity::class.java)
+                    intent.putExtra("ID_CHAT",chatId)
+                    startActivity(intent)
+                }
+
+            }
         }
     }
 
@@ -75,6 +87,7 @@ class DetailTicketActivity : AppCompatActivity() {
         titleTextView = this.findViewById(R.id.titleDetailTicketTextView)
         descriptionTextView = this.findViewById(R.id.descriptionDetailTicketTextView)
         statusTextView = this.findViewById(R.id.statusDetailTicketTextView)
+        chatButton = this.findViewById(R.id.chatDetailTicketButton)
     }
 
 
