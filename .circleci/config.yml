@@ -31,6 +31,4 @@ jobs:
       - run:
           name: Run Unit Tests
           command: ./gradlew test
-      - run:
-          name: Run Instrumentation Tests
-          command:
+
