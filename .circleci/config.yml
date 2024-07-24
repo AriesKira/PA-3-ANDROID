@@ -3,7 +3,7 @@ version: 2.1
 executors:
   android-executor:
     docker:
-      - image: circleci/android:api-30
+      - image: circleci/android:api-30-java17  # Image avec Java 17
     working_directory: ~/code
 
 jobs:
