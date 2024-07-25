@@ -23,21 +23,13 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 Runs all the tests
 
-### android beta
+### android deploy_to_testapp
 
 ```sh
-[bundle exec] fastlane android beta
+[bundle exec] fastlane android deploy_to_testapp
 ```
 
-test add firebase
-
-### android deploy
-
-```sh
-[bundle exec] fastlane android deploy
-```
-
-Deploy a new version to the Google Play
+Build and deploy to TestApp.io
 
 ----
 

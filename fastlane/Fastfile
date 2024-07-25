@@ -1,3 +1,5 @@
+fastlane_version "2.221.1"  # Spécifie la version de Fastlane, ajuste selon tes besoins
+
 default_platform(:android)
 
 platform :android do
@@ -8,17 +10,22 @@ platform :android do
 
   desc "Build and deploy to TestApp.io"
   lane :deploy_to_testapp do
-    apk_path = "app/build/outputs/apk/release/app-release-unsigned.apk"
-    if File.exist?(apk_path)
-      sh "curl -X POST https://api.testapp.io/deploy \
-        -H 'Authorization: Bearer #{ENV['TESTAPPIO_API_TOKEN']}' \
-        -F 'file=@#{Dir.pwd}/#{apk_path}' \
-        -F 'version=1.0.0' \
-        -F 'notes=Initial release' \
-        -F 'app_id=**********'"
-    else
-      UI.user_error!("APK file not found at path: #{apk_path}")
+   upload_to_testappio(
+       api_token: ENV['TESTAPPIO_API_TOKEN'],
+       app_id: ENV['TESTAPPIO_APP_ID'],
+       release: "android",
+       apk_file: ENV['APK_PATH'],
+       release_notes: "Manual release notes for Android",
+       git_release_notes: true,
+       git_commit_id: false,
+       notify: false
+     )
     end
-  end
+
+    desc "Run tests and deploy"
+      lane :test_and_deploy do
+        test
+        deploy_to_testapp
+      end
 
 end
