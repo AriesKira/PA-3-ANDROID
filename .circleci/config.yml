@@ -46,11 +46,6 @@ jobs:
       tag: default
 
     steps:
-      - checkout
-
-      - ruby/install:
-          version: 3.1.2
-
       - run:
           name: Install Bundler
           command: gem install bundler
