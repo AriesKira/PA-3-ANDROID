@@ -2,7 +2,6 @@ version: 2.1
 
 orbs:
   android: circleci/android@2.4.0
-  fastlane: circleci/fastlane@1.2.0
 
 jobs:
   build-and-test:
@@ -39,12 +38,19 @@ jobs:
             gem install bundler
             bundle install
 
-      # Exécuter les lanes Fastlane
-      - fastlane/fastlane:
-          lane: test
+      # Installer Fastlane
+      - run:
+          name: Install Fastlane
+          command: gem install fastlane
 
-      - fastlane/fastlane:
-          lane: deploy_to_testapp
+      # Exécuter les lanes Fastlane
+      - run:
+          name: Run Fastlane Test Lane
+          command: bundle exec fastlane test
+
+      - run:
+          name: Run Fastlane Deploy Lane
+          command: bundle exec fastlane deploy_to_testapp
 
 workflows:
   version: 2
