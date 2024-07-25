@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.senanas.data.TicketDataLayerSingleton
 import com.example.senanas.model.CreateTicketDto
@@ -28,10 +29,6 @@ class TicketActivityActivity : AppCompatActivity() {
         initViewModel()
         getToken()
 
-
-
-
-
         homeButton.setOnClickListener {
             val intent = Intent(this, TestActivity::class.java)
             startActivity(intent)
@@ -39,7 +36,15 @@ class TicketActivityActivity : AppCompatActivity() {
 
         sendTicketButton.setOnClickListener {
             val data = CreateTicketDto(title = titleEditText.text.toString(), description = descriptionEditText.text.toString())
-            ticketDataLayerSingleton.getTicketViewModel().createTicket(token!!,data)
+            var result = ticketDataLayerSingleton.getTicketViewModel().createTicket(token!!,data)
+
+            if (result != null) {
+                val successMessage = "Le ticket a bien été créé"
+                Toast.makeText(this, successMessage, Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, TestActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
     }
 

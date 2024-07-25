@@ -54,6 +54,7 @@
             android:exported="false" />
         <activity
             android:name=".views.MainActivity"
+            android:theme="@style/Base.Theme.Senanas.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -48,7 +48,15 @@ class DetailTicketActivity : AppCompatActivity() {
                         it?.let {
                             titleTextView.text = it.title
                             descriptionTextView.text = it.description
-                            statusTextView.text = "status : ${it.status}"
+
+                            if (it.status == "OPENED") {
+                                statusTextView.text = "status : Ouvert"
+                            } else if (it.status == "CLOSED") {
+                                statusTextView.text = "status : Fermé"
+                            } else if (it.status == "IN_PROGRESS") {
+                                statusTextView.text = "status : En cours"
+                            }
+
                             chatId = it.chatId
                         }
                     }
