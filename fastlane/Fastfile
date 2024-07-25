@@ -15,10 +15,10 @@ platform :android do
 
         # Envoyer le fichier APK à TestApp.io via une requête HTTP POST
         sh "curl -X POST https://api.testapp.io/deploy \
-            -H 'Authorization: Bearer #{ENV['TESTAPP_API_TOKEN']}' \
+            -H 'Authorization: Bearer #{ENV['TESTAPPIO_API_TOKEN']}' \
             -F 'file=@#{apk_path}' \
             -F 'version=1.0.0' \
             -F 'notes=Initial release' \
-            -F 'app_id=#{ENV['TESTAPP_APP_ID']}'"
+            -F 'app_id=#{ENV['TESTAPPIO_APP_ID']}'"
   end
 end
