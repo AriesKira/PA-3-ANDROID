@@ -24,5 +24,12 @@ jobs:
       - android/start-emulator-and-run-tests:
           test-command: ./gradlew connectedDebugAndroidTest
           system-image: system-images;android-30;google_apis;x86
+      - run:
+          name: Install Bundler
+          command: bundle install
 
-      - run: bundle install
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build-and-test
