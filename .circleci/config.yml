@@ -34,8 +34,9 @@ jobs:
       - run:
           name: Install Bundler
           command: bundle install
-      - fastlane/run:
-          lane: deploy_to_testapp
+      - run:
+          name: Run Fastlane Deploy
+          command: bundle exec fastlane deploy_to_testapp
 
 workflows:
   version: 2
