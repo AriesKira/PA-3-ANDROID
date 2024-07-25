@@ -28,9 +28,6 @@ jobs:
           name: Assemble release build
           command: ./gradlew clean assembleRelease
       - run:
-          name: List APK directory contents
-          command: ls -l app/build/outputs/apk/release/
-      - run:
           name: Install Bundler
           command: gem install bundler
       - run:
@@ -38,7 +35,7 @@ jobs:
           command: bundle install
       - run:
           name: Run Fastlane Deploy
-          command: bundle exec fastlane deploy_to_testapp
+          command: bundle exec fastlane test
 
 workflows:
   version: 2
