@@ -8,17 +8,17 @@ platform :android do
 
   desc "Build and deploy to TestApp.io"
   lane :deploy_to_testapp do
-    # Nettoyer et assembler le build
-    gradle(task: "clean assembleRelease")
-
     apk_path = "app/build/outputs/apk/release/app-release-unsigned.apk"
-
-        # Envoyer le fichier APK à TestApp.io via une requête HTTP POST
-        sh "curl -X POST https://api.testapp.io/deploy \
-            -H 'Authorization: Bearer #{ENV['TESTAPPIO_API_TOKEN']}' \
-            -F 'file=@#{apk_path}' \
-            -F 'version=1.0.0' \
-            -F 'notes=Initial release' \
-            -F 'app_id=#{ENV['TESTAPPIO_APP_ID']}'"
+    if File.exist?(apk_path)
+      sh "curl -X POST https://api.testapp.io/deploy \
+        -H 'Authorization: Bearer #{ENV['TESTAPPIO_API_TOKEN']}' \
+        -F 'file=@#{Dir.pwd}/#{apk_path}' \
+        -F 'version=1.0.0' \
+        -F 'notes=Initial release' \
+        -F 'app_id=**********'"
+    else
+      UI.user_error!("APK file not found at path: #{apk_path}")
+    end
   end
+
 end
