@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Senanas</string>
+    <string name="application_title_login_view">SENANAS</string>
+    <string name="email_edit_text_login_view">Mail</string>
+    <string name="password_edit_text_login_view">Password</string>
+    <string name="login_button_login_view">Login</string>
+    <string name="NotRegistered">Not registered ?</string>
+    <string name="Register">Register</string>
+    <string name="mail">Mail</string>
+    <string name="firstname">Firstname</string>
+    <string name="lastname">Lastname</string>
+    <string name="toRegister">Register</string>
+    <string name="emailNotValid">Mail address is invalid.</string>
+    <string name="passwordRequired">Password required</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Profil</string>
+    <string name="save">Save</string>
+    <string name="category_name">Category Name</string>
+    <string name="home">Home</string>
+    <string name="profil">Profil</string>
+    <string name="tickets">My tickets</string>
+    <string name="code_postale">Postal code\n</string>
+    <string name="city">City\n</string>
+    <string name="adresse">address\n</string>
+    <string name="lastname_required">Lastname required</string>
+    <string name="firstname_required">Firstname required</string>
+    <string name="address_required">Address required</string>
+    <string name="zipcode_required">Postal code invalid</string>
+    <string name="city_required">Address required\n</string>
+    <string name="sendTicket">Send ticket</string>
+    <string name="chat">chat</string>
+    <string name="refresh">Update</string>
+    <string name="envoyer">Send</string>
+</resources>

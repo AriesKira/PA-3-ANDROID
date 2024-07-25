@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "161832906270",
+    "project_id": "projet-ci-2feb4",
+    "storage_bucket": "projet-ci-2feb4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161832906270:android:bfcba6b7c1e46560cfc80f",
+        "android_client_info": {
+          "package_name": "com.example.senanas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9Ux9voP4FMVMUKSDaJMPTFF-OjarQCFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

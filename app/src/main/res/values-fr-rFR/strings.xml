@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Senanas</string>
+    <string name="application_title_login_view">SENANAS</string>
+    <string name="email_edit_text_login_view">Email</string>
+    <string name="password_edit_text_login_view">Mot de passe</string>
+    <string name="login_button_login_view">Connexion</string>
+    <string name="NotRegistered">Pas encore de compte ?</string>
+    <string name="Register">Inscription</string>
+    <string name="mail">Email</string>
+    <string name="firstname">Prenom</string>
+    <string name="lastname">Nom de famille</string>
+    <string name="toRegister">S\'inscrire</string>
+    <string name="emailNotValid">L\'adresse e-mail saisie n\'est pas valide.</string>
+    <string name="passwordRequired">Un mot de passe est requis</string>
+    <string name="title_activity_home">Acceuil</string>
+    <string name="title_home">Acceuil</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Profil</string>
+    <string name="save">Sauvegarder</string>
+    <string name="category_name">Nom de catégorie</string>
+    <string name="home">Acceuil</string>
+    <string name="profil">Profil</string>
+    <string name="tickets">Mes tickets</string>
+    <string name="code_postale">Code postale\n</string>
+    <string name="city">ville\n</string>
+    <string name="adresse">adresse\n</string>
+    <string name="lastname_required">Le nom de famille est requis</string>
+    <string name="firstname_required">Le prenom est requis</string>
+    <string name="address_required">Adresse requise</string>
+    <string name="zipcode_required">Code postal requis ou invalid</string>
+    <string name="city_required">adresse requise\n</string>
+    <string name="sendTicket">Envoyer le ticket</string>
+    <string name="chat">chat</string>
+    <string name="refresh">Actualiser</string>
+    <string name="envoyer">Envoyer</string>
+</resources>
