@@ -11,7 +11,7 @@ platform :android do
     # Nettoyer et assembler le build
     gradle(task: "clean assembleRelease")
 
-    apk_path = "app/build/outputs/apk/release/app-release.apk"
+    apk_path = "app/build/outputs/apk/release/app-release-unsigned.apk"
 
         # Envoyer le fichier APK à TestApp.io via une requête HTTP POST
         sh "curl -X POST https://api.testapp.io/deploy \
