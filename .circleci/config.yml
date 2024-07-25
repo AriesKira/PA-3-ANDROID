@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   android: circleci/android@2.4.0
+  fastlane: circleci/fastlane@1.2.0
 
 jobs:
   build-and-test:
@@ -11,6 +12,8 @@ jobs:
 
     steps:
       - checkout
+
+      # Installer OpenJDK 17
       - run:
           name: Install OpenJDK 17
           command: |
@@ -18,15 +21,30 @@ jobs:
             sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
             sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
             java -version
+
+      # Assembler le build debug
       - run:
           name: Assemble debug build
           command: ./gradlew assembleDebug
+
+      # Démarrer l'émulateur et exécuter les tests
       - android/start-emulator-and-run-tests:
           test-command: ./gradlew connectedDebugAndroidTest
           system-image: system-images;android-30;google_apis;x86
+
+      # Installer Bundler et les dépendances
       - run:
-          name: Install Bundler
-          command: bundle install
+          name: Install Bundler and Dependencies
+          command: |
+            gem install bundler
+            bundle install
+
+      # Exécuter les lanes Fastlane
+      - fastlane/fastlane:
+          lane: test
+
+      - fastlane/fastlane:
+          lane: deploy_to_testapp
 
 workflows:
   version: 2
