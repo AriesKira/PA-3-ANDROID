@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   android: circleci/android@2.4.0
+  ruby: circleci/ruby@1.1.0
 
 jobs:
   build-and-test:
@@ -11,6 +12,18 @@ jobs:
 
     steps:
       - checkout
+
+      - ruby/install:
+          version: 3.1.2  # Spécifiez la version Ruby requise par votre projet
+
+      - run:
+          name: Install Bundler
+          command: gem install bundler
+
+      - run:
+          name: Install Fastlane
+          command: bundle install
+
       - run:
           name: Install OpenJDK 17
           command: |
@@ -18,18 +31,51 @@ jobs:
             sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
             sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
             java -version
+
       - run:
-          name: Assemble debug build
+          name: Assemble Debug Build
           command: ./gradlew assembleDebug
-      - android/start-emulator-and-run-tests:
-          test-command: ./gradlew connectedDebugAndroidTest
-          system-image: system-images;android-30;google_apis;x86
+
+      - run:
+          name: Run Fastlane Test Lane
+          command: bundle exec fastlane test
+
+  deploy:
+    executor:
+      name: android/android-machine
+      tag: default
+
+    steps:
+      - checkout
+
+      - ruby/install:
+          version: 3.1.2
+
       - run:
           name: Install Bundler
+          command: gem install bundler
+
+      - run:
+          name: Install Fastlane
           command: bundle install
+
+      - run:
+          name: Install OpenJDK 17
+          command: |
+            sudo apt-get update && sudo apt-get install openjdk-17-jdk
+            sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+            sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
+            java -version
+
+      - run:
+          name: Run Fastlane Deploy Lane
+          command: bundle exec fastlane deploy_to_testapp
 
 workflows:
   version: 2
-  build:
+  build_and_deploy:
     jobs:
       - build-and-test
+      - deploy:
+          requires:
+            - build-and-test
