@@ -37,4 +37,5 @@
     <string name="ticketTitleHint">Ticket title</string>
     <string name="ticketDescriptionHint">Ticket description</string>
     <string name="ticket_list_title">Ticket list</string>
+    <string name="type_message">Type your message here...</string>
 </resources>
