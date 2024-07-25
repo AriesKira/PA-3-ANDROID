@@ -20,6 +20,7 @@ platform :android do
     apk_path = "app/build/outputs/apk/release/app-release.apk"
 
     # Envoyer le fichier APK à TestApp.io via une requête HTTP POST
+
     sh "curl -X POST https://api.testapp.io/deploy \
         -H 'Authorization: Bearer #{ENV['TESTAPP_API_TOKEN']}' \
         -F 'file=@#{apk_path}' \
