@@ -18,6 +18,7 @@ import com.example.senanas.HomeActivity
 import com.example.senanas.ProfileActivity
 import com.example.senanas.R
 import com.example.senanas.TestActivity
+import com.example.senanas.Validator
 import com.example.senanas.data.UserDataLayerSingleton
 import com.example.senanas.model.LoginDto
 import com.example.senanas.model.RegisterDto
@@ -103,14 +104,9 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    private fun isValidEmail(email: String): Boolean {
-        val emailRegex = Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")
-        return emailRegex.matches(email)
-    }
-
     private fun checkForm() : Int {
         var errors = 0
-        if(!isValidEmail(this.emailEditText.text.toString()) || this.emailEditText.text.toString().isEmpty()) {
+        if(!Validator.isValidEmail(this.emailEditText.text.toString()) || this.emailEditText.text.toString().isEmpty()) {
             this.emailErrorTextView.visibility = View.VISIBLE
             errors += 1
         }

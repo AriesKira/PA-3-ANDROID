@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.senanas.Formatter
 import com.example.senanas.R
 import com.example.senanas.model.MessageDto
 import com.example.senanas.model.TicketListDto
@@ -23,11 +24,9 @@ class ChatListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     }
 
     fun bind(message: MessageDto) {
-        val zonedDateTime = ZonedDateTime.parse(message.date)
-        val formatter = DateTimeFormatter.ofPattern("d MMMM yyyy, HH:mm", Locale.FRENCH)
         this.nameTextView.text = message.message
         this.senderTextView.setText("${message.sender} :")
-        this.dateTextView.text = zonedDateTime.format(formatter)
+        this.dateTextView.text = Formatter.formatDate(message.date)
 
     }
 }
