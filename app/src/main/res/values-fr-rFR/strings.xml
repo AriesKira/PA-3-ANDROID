@@ -34,4 +34,8 @@
     <string name="chat">chat</string>
     <string name="refresh">Actualiser</string>
     <string name="envoyer">Envoyer</string>
+    <string name="ticketTitleHint">Titre du ticket</string>
+    <string name="ticketDescriptionHint">Description du ticket</string>
+    <string name="ticket_list_title">Liste des Tickets</string>
+    <string name="type_message">Tapez votre message ici...</string>
 </resources>

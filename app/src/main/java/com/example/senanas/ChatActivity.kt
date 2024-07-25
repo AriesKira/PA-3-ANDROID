@@ -18,7 +18,6 @@ import com.example.senanas.viewmodels.ChatViewModel
 import com.example.senanas.views.chatRecyclerView.ChatListAdapter
 
 class ChatActivity : AppCompatActivity() {
-    private lateinit var refreshButton: Button
     private lateinit var sendButton: Button
     private lateinit var messageEditText: EditText
     private lateinit var chatRecyclerView: RecyclerView
@@ -81,11 +80,6 @@ class ChatActivity : AppCompatActivity() {
                 }
             }
 
-            refreshButton.setOnClickListener {
-                chatDataLayerSingleton.getChatViewModel().getChat(token!!,chatId)
-            }
-
-
         }
 
 
@@ -94,7 +88,6 @@ class ChatActivity : AppCompatActivity() {
 
 
     private fun initView(){
-        refreshButton = this.findViewById(R.id.refreshChatButton)
         sendButton = this.findViewById(R.id.sendMessageButton)
         messageEditText = this.findViewById(R.id.sendMessageEditText)
         chatRecyclerView = this.findViewById(R.id.chatBody)

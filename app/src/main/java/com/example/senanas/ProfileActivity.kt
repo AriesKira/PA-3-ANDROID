@@ -121,7 +121,7 @@ class ProfileActivity : AppCompatActivity() {
     private fun checkForm() : Int {
 
         var errors = 0
-        if(!isValidEmail(this.emailEditText.text.toString()) || this.emailEditText.text.toString().isEmpty()) {
+        if(Validator.isValidEmail(this.emailEditText.text.toString()) || this.emailEditText.text.toString().isEmpty()) {
             this.errorEmailTextView.visibility = View.VISIBLE
             errors += 1
         }
@@ -149,7 +149,7 @@ class ProfileActivity : AppCompatActivity() {
             this.errorCityTextView.visibility = View.VISIBLE
             errors += 1
         }
-        if(!isFrenchPostalCode(this.zipCodeEditText.text.toString()) || this.zipCodeEditText.text.toString().isEmpty()) {
+        if(!Validator.isFrenchPostalCode(this.zipCodeEditText.text.toString()) || this.zipCodeEditText.text.toString().isEmpty()) {
             this.errorZipCodeTextView.visibility = View.VISIBLE
             errors += 1
         }
@@ -166,13 +166,4 @@ class ProfileActivity : AppCompatActivity() {
         this.errorAddressTextView.visibility = View.INVISIBLE
     }
 
-    private fun isValidEmail(email: String): Boolean {
-        val emailRegex = Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")
-        return emailRegex.matches(email)
-    }
-
-    private fun isFrenchPostalCode(postalCode: String): Boolean {
-        val postalCodeRegex = Regex("^\\d{5}$")
-        return postalCode.matches(postalCodeRegex)
-    }
 }
