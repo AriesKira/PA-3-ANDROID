@@ -6,15 +6,6 @@ platform :android do
     gradle(task: "test")
   end
 
-  desc "test add firebase"
-    lane :beta do
-      gradle(task: "clean assembleRelease")
-      firebase_app_distribution(
-        app: "1:161832906270:android:bfcba6b7c1e46560cfc80f",
-        release_notes: "Release notes for the beta build",
-        debug: true
-      )
-    end
 
   desc "Deploy a new version to the Google Play"
   lane :deploy do
