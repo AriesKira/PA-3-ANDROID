@@ -6,10 +6,25 @@ platform :android do
     gradle(task: "test")
   end
 
-
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
+  desc "Build and deploy to TestApp.io"
+  lane :deploy_to_testapp do
+    # Nettoyer et assembler le build
     gradle(task: "clean assembleRelease")
-    upload_to_play_store
+
+    # Déployer sur TestApp.io
+    deploy_to_testapp
+  end
+
+  private_lane :deploy_to_testapp do
+    # Chemin vers le fichier APK généré
+    apk_path = "app/build/outputs/apk/release/app-release.apk"
+
+    # Envoyer le fichier APK à TestApp.io via une requête HTTP POST
+    sh "curl -X POST https://api.testapp.io/deploy \
+        -H 'Authorization: Bearer #{ENV['TESTAPP_API_TOKEN']}' \
+        -F 'file=@#{apk_path}' \
+        -F 'version=1.0.0' \
+        -F 'notes=Initial release' \
+        -F 'app_id=#{ENV['TESTAPP_APP_ID']}'"
   end
 end
