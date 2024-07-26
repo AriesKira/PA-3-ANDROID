@@ -1,3 +1,4 @@
+/*
 package com.example.senanas.ui.home
 
 import android.os.Bundle
@@ -67,4 +68,4 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-}
+}*/

@@ -108,7 +108,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         homeButton.setOnClickListener {
-            val intent = Intent(this, TestActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
 

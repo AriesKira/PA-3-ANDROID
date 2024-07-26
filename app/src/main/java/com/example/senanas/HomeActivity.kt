@@ -1,40 +1,80 @@
 package com.example.senanas
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.senanas.data.UserDataLayerSingleton
-import com.example.senanas.databinding.ActivityHomeBinding
+import com.example.senanas.views.category_recycler_view.CategoryListAdapter
 
-class HomeActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityHomeBinding
-    private lateinit var categoryRecyclerView: RecyclerView
+class HomeActivity : AppCompatActivity(),NavigateOnClickLListener {
     private lateinit var userDataLayer: UserDataLayerSingleton
+    private lateinit var recyclerViewCategories: RecyclerView
+    private lateinit var profileButton: Button
+    private lateinit var ticketButton: Button
 
+    private var token:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
 
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        getToken()
 
-        val navView: BottomNavigationView = binding.navView
+        userDataLayer = UserDataLayerSingleton
+        userDataLayer.createRetrofitClient()
+        userDataLayer.createTodoService()
+        userDataLayer.initHomeViewModel()
+        userDataLayer.getHomeViewModel().getCategories(token!!)
+        recyclerViewCategories = findViewById(R.id.recyclerViewCategories2)
+        profileButton = this.findViewById(R.id.profileButton)
+        ticketButton = this.findViewById(R.id.ticketButton)
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_home)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+
+
+        profileButton.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        ticketButton.setOnClickListener {
+            val intent = Intent(this, TicketsActivity::class.java)
+            startActivity(intent)
+        }
+
+        userDataLayer.getHomeViewModel().categories.observe(this, Observer { result ->
+
+            result.onSuccess { categories ->
+                categories?.let {
+                    val categoriesAdapter = CategoryListAdapter(it,this)
+                    recyclerViewCategories.setAdapter(categoriesAdapter)
+                    val gridLayoutManager = GridLayoutManager(this, 2)
+                    recyclerViewCategories.layoutManager = gridLayoutManager
+                }
+            }
+        })
+
+
     }
+
+    private fun getToken():String {
+        val sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+        token = sharedPreferences.getString("token", "DefaultName")
+        return token!!
+    }
+
+    override fun navigate(id:Int?) {
+        Intent(this, TicketActivityActivity::class.java).also {
+            startActivity(it)
+        }
+    }
+}
+
+
+interface NavigateOnClickLListener {
+    fun navigate(id:Int?)
 }

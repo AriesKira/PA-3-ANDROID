@@ -30,7 +30,7 @@ class TicketActivityActivity : AppCompatActivity() {
         getToken()
 
         homeButton.setOnClickListener {
-            val intent = Intent(this, TestActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
 
@@ -41,7 +41,7 @@ class TicketActivityActivity : AppCompatActivity() {
             if (result != null) {
                 val successMessage = "Le ticket a bien été créé"
                 Toast.makeText(this, successMessage, Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, TestActivity::class.java)
+                val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
                 finish()
             }

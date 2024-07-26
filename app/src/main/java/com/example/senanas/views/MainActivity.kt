@@ -1,6 +1,5 @@
 package com.example.senanas.views
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -9,19 +8,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import com.example.senanas.HomeActivity
-import com.example.senanas.ProfileActivity
 import com.example.senanas.R
-import com.example.senanas.TestActivity
 import com.example.senanas.Validator
 import com.example.senanas.data.UserDataLayerSingleton
 import com.example.senanas.model.LoginDto
-import com.example.senanas.model.RegisterDto
 
 class MainActivity : AppCompatActivity() {
     private lateinit var registerButton: Button
@@ -53,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                     val editor = sharedPreferences.edit()
                     editor.putString("token", "BEARER ${loginResponse!!.token}")
                     editor.apply()
-                    val intent = Intent(this, TestActivity::class.java)
+                    val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
                 },
                 onFailure = { throwable ->

@@ -1,19 +1,14 @@
+/*
 package com.example.senanas.ui.notifications
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.senanas.HomeActivity
 import com.example.senanas.data.UserDataLayerSingleton
 import com.example.senanas.databinding.FragmentHomeBinding
-import com.example.senanas.model.UpdateUserDto
 
 class NotificationsFragment : Fragment() {
 
@@ -70,3 +65,4 @@ class NotificationsFragment : Fragment() {
         _binding = null
     }
 }
+*/

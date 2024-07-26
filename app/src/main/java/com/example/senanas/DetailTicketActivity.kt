@@ -101,7 +101,7 @@ class DetailTicketActivity : AppCompatActivity() {
 
     private fun initNavbar(){
         homeButton.setOnClickListener {
-            val intent = Intent(this, TestActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
         profileButton.setOnClickListener {
