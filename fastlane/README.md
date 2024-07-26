@@ -31,6 +31,22 @@ Runs all the tests
 
 Build and deploy to TestApp.io
 
+### android build_for_screengrab
+
+```sh
+[bundle exec] fastlane android build_for_screengrab
+```
+
+Build test APK for screenshots
+
+### android test_and_deploy
+
+```sh
+[bundle exec] fastlane android test_and_deploy
+```
+
+Run tests and deploy
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.

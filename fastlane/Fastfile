@@ -1,4 +1,4 @@
-fastlane_version "2.221.1"  # Spécifie la version de Fastlane, ajuste selon tes besoins
+fastlane_version "2.221.1"
 
 default_platform(:android)
 
@@ -10,29 +10,42 @@ platform :android do
 
   desc "Build and deploy to TestApp.io"
   lane :deploy_to_testapp do
-   upload_to_testappio(
-       api_token: ENV['TESTAPPIO_API_TOKEN'],
-       app_id: ENV['TESTAPPIO_APP_ID'],
-       release: "android",
-       apk_file: ENV['APK_PATH'],
-       release_notes: "Manual release notes for Android",
-       git_release_notes: true,
-       git_commit_id: false,
-       notify: false
-     )
+        increment_version_code(
+            gradle_file_path: "./app/build.gradle.kts",
+        )
+        upload_to_testappio(
+           api_token: ENV['TESTAPPIO_API_TOKEN'],
+           app_id: ENV['TESTAPPIO_APP_ID'],
+           release: "android",
+           apk_file: ENV['APK_PATH'],
+           release_notes: "Manual release notes for Android",
+           git_release_notes: true,
+           git_commit_id: false,
+           notify: false
+         )
     end
 
-    esc "Build test APK for screenshots"
-        lane :build_for_screengrab do
+    desc "Build test APK for screenshots"
+    lane :build_for_screengrab do
         gradle(
             task: 'clean'
         )
-        build_android_app(
-            task: 'assemble',
-            build_type: 'AndroidTest'
+        gradle(
+            task: 'assembleDebug'
         )
-        screengrab()
+        gradle(
+                task: 'assembleAndroidTest'
+            )
+        screengrab(
+            app_package_name: "com.example.senanas",
+            app_apk_path: "app/build/outputs/apk/debug/app-debug.apk",
+            tests_apk_path: "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+            locales: ["fr-FR"],
+            clear_previous_screenshots: true,
+            output_directory: "fastlane/metadata/android"
+         )
     end
+
 
     desc "Run tests and deploy"
       lane :test_and_deploy do
@@ -40,7 +53,5 @@ platform :android do
         deploy_to_testapp
         build_for_screengrab
       end
-
-      d
 
 end
