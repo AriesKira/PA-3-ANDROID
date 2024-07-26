@@ -23,6 +23,9 @@ jobs:
           test-command: ./gradlew connectedDebugAndroidTest
           system-image: system-images;android-30;google_apis;x86
       - run:
+            name: Assemble release build
+            command: ./gradlew clean assembleRelease
+      - run:
           name: Install Bundler
           command: gem install bundler
       - run:

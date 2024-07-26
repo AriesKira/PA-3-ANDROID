@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context=".ui.home.HomeFragment" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://schemas.android.com/apk/res/android ">
 
-    <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textAlignment="center"/>
+    <TextView android:id="@+id/text_home" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:textSize="20sp"
+        android:textAlignment="center" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewCategories"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_category"/>
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/recyclerViewCategories"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        tools:listitem="@layout/item_category" />
 </androidx.appcompat.widget.LinearLayoutCompat>
