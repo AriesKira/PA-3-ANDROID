@@ -11,8 +11,6 @@ jobs:
 
     steps:
       - checkout
-
-      # Installer OpenJDK 17
       - run:
           name: Install OpenJDK 17
           command: |
@@ -21,39 +19,15 @@ jobs:
             sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
             java -version
 
-      # Créer et démarrer un AVD
-      - run:
-          name: Create and Start Emulator
-          command: |
-            echo "Creating and starting emulator..."
-            echo "no" | sdkmanager --sdk_root=/usr/local/android-sdk --install "system-images;android-30;google_apis;x86"
-            echo "no" | avdmanager create avd --name Pixel_4_XL_API_30 --package "system-images;android-30;google_apis;x86" --device "pixel_4_xl" --sdcard 512M
-            emulator -avd Pixel_6_PRO_API_30 -no-audio -no-boot-anim &
-            adb wait-for-device
-            adb shell input keyevent 82
-            echo "Emulator started."
-
-      # Attendre que l'émulateur soit prêt
-      - run:
-          name: Wait for Emulator
-          command: |
-            echo "Waiting for emulator to boot..."
-            while [[ $(adb shell getprop sys.boot_completed 2>/dev/null) != 1 ]]; do
-              sleep 5
-            done
-            echo "Emulator is ready!"
-
-      # Installer Bundler
+      - android/start-emulator-and-run-tests:
+          test-command: ./gradlew connectedDebugAndroidTest
+          system-image: system-images;android-30;google_apis;x86
       - run:
           name: Install Bundler
           command: gem install bundler
-
-      # Installer les gems
       - run:
           name: Bundle Install
           command: bundle install
-
-      # Exécuter Fastlane pour construire les APKs et capturer les écrans
       - run:
           name: Run Fastlane Deploy
           command: bundle exec fastlane test_and_deploy

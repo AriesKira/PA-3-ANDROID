@@ -51,7 +51,6 @@ platform :android do
       lane :test_and_deploy do
         test
         deploy_to_testapp
-        build_for_screengrab
       end
 
 end
