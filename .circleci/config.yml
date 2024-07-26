@@ -21,11 +21,19 @@ jobs:
             sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
             java -version
 
-      # Démarrer l'émulateur et attendre qu'il soit prêt
-      - android/start-emulator-and-run-tests:
-          test-command: echo "Emulator started and tests are running"
-          system-image: system-images;android-30;google_apis;x86
+      # Créer et démarrer un AVD
+      - run:
+          name: Create and Start Emulator
+          command: |
+            echo "Creating and starting emulator..."
+            echo "no" | sdkmanager --sdk_root=/usr/local/android-sdk --install "system-images;android-30;google_apis;x86"
+            echo "no" | avdmanager create avd --name Pixel_4_XL_API_30 --package "system-images;android-30;google_apis;x86" --device "pixel_4_xl" --sdcard 512M
+            emulator -avd Pixel_6_PRO_API_30 -no-audio -no-boot-anim &
+            adb wait-for-device
+            adb shell input keyevent 82
+            echo "Emulator started."
 
+      # Attendre que l'émulateur soit prêt
       - run:
           name: Wait for Emulator
           command: |
