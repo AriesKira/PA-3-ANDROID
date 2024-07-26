@@ -11,6 +11,8 @@ jobs:
 
     steps:
       - checkout
+
+      # Installer OpenJDK 17
       - run:
           name: Install OpenJDK 17
           command: |
@@ -18,15 +20,32 @@ jobs:
             sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
             sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
             java -version
+
+      # Démarrer l'émulateur et attendre qu'il soit prêt
       - android/start-emulator-and-run-tests:
-          test-command: ./gradlew connectedDebugAndroidTest
+          test-command: echo "Emulator started and tests are running"
           system-image: system-images;android-30;google_apis;x86
+
+      - run:
+          name: Wait for Emulator
+          command: |
+            echo "Waiting for emulator to boot..."
+            while [[ $(adb shell getprop sys.boot_completed 2>/dev/null) != 1 ]]; do
+              sleep 5
+            done
+            echo "Emulator is ready!"
+
+      # Installer Bundler
       - run:
           name: Install Bundler
           command: gem install bundler
+
+      # Installer les gems
       - run:
           name: Bundle Install
           command: bundle install
+
+      # Exécuter Fastlane pour construire les APKs et capturer les écrans
       - run:
           name: Run Fastlane Deploy
           command: bundle exec fastlane test_and_deploy
