@@ -21,8 +21,8 @@ android {
         applicationId = "com.example.senanas"
         minSdk = 27
         targetSdk = 34
-        versionCode = 5
-        versionName = "1.1"
+        versionCode = 25
+        versionName = "25"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
