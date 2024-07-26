@@ -1,11 +1,10 @@
 package com.example.senanas.viewmodels
 
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.senanas.model.LoginDto
-import com.example.senanas.model.LoginResponseDto
-import com.example.senanas.model.ResponseRegisterDto
+import com.example.senanas.modelDto.LoginDto
+import com.example.senanas.modelDto.LoginResponseDto
+import com.example.senanas.modelDto.ResponseRegisterDto
 import com.example.senanas.network.user.UserRepository
 import com.google.gson.Gson
 import retrofit2.Call

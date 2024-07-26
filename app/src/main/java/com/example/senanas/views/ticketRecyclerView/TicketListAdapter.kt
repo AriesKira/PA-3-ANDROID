@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.senanas.NavigateOnClickLListener
 import com.example.senanas.R
-import com.example.senanas.model.TicketListDto
+import com.example.senanas.modelDto.TicketListDto
 
 class TicketListAdapter(
     var ticketList: List<TicketListDto>,

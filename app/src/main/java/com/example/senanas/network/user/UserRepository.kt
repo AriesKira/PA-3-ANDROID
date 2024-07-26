@@ -1,13 +1,12 @@
 package com.example.senanas.network.user
 //import com.example.myfirstapp.model.UserDto
-import com.example.senanas.model.CategoryDto
-import com.example.senanas.model.GetUserDto
-import com.example.senanas.model.RegisterDto
-import com.example.senanas.model.ResponseRegisterDto
-import com.example.senanas.model.LoginDto
-import com.example.senanas.model.LoginResponseDto
-import com.example.senanas.model.UpdateUserDto
-import okhttp3.ResponseBody
+import com.example.senanas.modelDto.CategoryDto
+import com.example.senanas.modelDto.GetUserDto
+import com.example.senanas.modelDto.RegisterDto
+import com.example.senanas.modelDto.ResponseRegisterDto
+import com.example.senanas.modelDto.LoginDto
+import com.example.senanas.modelDto.LoginResponseDto
+import com.example.senanas.modelDto.UpdateUserDto
 import retrofit2.Call
 
 class UserRepository(

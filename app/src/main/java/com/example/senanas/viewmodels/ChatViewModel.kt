@@ -2,9 +2,8 @@ package com.example.senanas.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.senanas.model.MessageDto
-import com.example.senanas.model.SendMessageDto
-import com.example.senanas.model.TicketListDto
+import com.example.senanas.modelDto.MessageDto
+import com.example.senanas.modelDto.SendMessageDto
 import com.example.senanas.network.user.ChatRepository
 import retrofit2.Call
 import retrofit2.Callback
@@ -40,7 +39,6 @@ class ChatViewModel(private val chatRepository: ChatRepository) {
         call.enqueue(object :Callback<MessageDto> {
             override fun onResponse(p0: Call<MessageDto>, p1: Response<MessageDto>) {
                 if(p1.isSuccessful){
-                    val data = p1.body()
                     _addMessage.postValue(true)
                 }
             }

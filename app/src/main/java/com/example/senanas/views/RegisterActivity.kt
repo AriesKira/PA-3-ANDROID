@@ -12,7 +12,7 @@ import androidx.lifecycle.Observer
 import com.example.senanas.data.UserDataLayerSingleton
 import com.example.senanas.R
 import com.example.senanas.Validator
-import com.example.senanas.model.RegisterDto
+import com.example.senanas.modelDto.RegisterDto
 
 class RegisterActivity : AppCompatActivity(),RedirectToLogin {
 

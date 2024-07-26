@@ -68,7 +68,7 @@ class HomeActivity : AppCompatActivity(),NavigateOnClickLListener {
     }
 
     override fun navigate(id:Int?) {
-        Intent(this, TicketActivityActivity::class.java).also {
+        Intent(this, CreateTicketActivity::class.java).also {
             startActivity(it)
         }
     }

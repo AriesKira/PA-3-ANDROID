@@ -1,12 +1,10 @@
 package com.example.senanas.views.chatRecyclerView
 
-import android.opengl.Visibility
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.senanas.R
-import com.example.senanas.model.MessageDto
+import com.example.senanas.modelDto.MessageDto
 
 class ChatListAdapter(
     var chatList: List<MessageDto>

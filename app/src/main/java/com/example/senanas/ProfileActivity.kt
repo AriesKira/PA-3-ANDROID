@@ -7,12 +7,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.senanas.data.UserDataLayerSingleton
-import com.example.senanas.model.UpdateUserDto
+import com.example.senanas.modelDto.UpdateUserDto
 
 class ProfileActivity : AppCompatActivity() {
 

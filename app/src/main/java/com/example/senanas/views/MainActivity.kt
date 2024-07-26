@@ -14,7 +14,7 @@ import com.example.senanas.HomeActivity
 import com.example.senanas.R
 import com.example.senanas.Validator
 import com.example.senanas.data.UserDataLayerSingleton
-import com.example.senanas.model.LoginDto
+import com.example.senanas.modelDto.LoginDto
 
 class MainActivity : AppCompatActivity() {
     private lateinit var registerButton: Button
@@ -39,9 +39,11 @@ class MainActivity : AppCompatActivity() {
         userDataLayer.getLoginViewModelViewModel().loginResult.observe(this, Observer { result ->
             result.fold(
                 onSuccess = { loginResponse ->
+                    /*
                     val token = loginResponse?.token
                     val user = loginResponse?.user
                     println(loginResponse)
+                    */
                     val sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
                     val editor = sharedPreferences.edit()
                     editor.putString("token", "BEARER ${loginResponse!!.token}")

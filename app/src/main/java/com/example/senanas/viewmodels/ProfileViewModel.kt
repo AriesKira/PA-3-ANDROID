@@ -2,13 +2,9 @@ package com.example.senanas.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.senanas.model.GetUserDto
-import com.example.senanas.model.RegisterDto
-import com.example.senanas.model.ResponseRegisterDto
-import com.example.senanas.model.UpdateUserDto
+import com.example.senanas.modelDto.GetUserDto
+import com.example.senanas.modelDto.UpdateUserDto
 import com.example.senanas.network.user.UserRepository
-import com.google.gson.Gson
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

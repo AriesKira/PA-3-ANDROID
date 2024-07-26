@@ -1,9 +1,9 @@
 package com.example.senanas.network.user
 
-import com.example.senanas.model.CreateTicketDto
-import com.example.senanas.model.DetailTicketDto
-import com.example.senanas.model.ResponseRegisterDto
-import com.example.senanas.model.TicketListDto
+import com.example.senanas.modelDto.CreateTicketDto
+import com.example.senanas.modelDto.DetailTicketDto
+import com.example.senanas.modelDto.ResponseRegisterDto
+import com.example.senanas.modelDto.TicketListDto
 import retrofit2.Call
 
 class TicketRepository(private val ticketService: TicketService) {

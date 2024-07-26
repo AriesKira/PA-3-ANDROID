@@ -1,4 +1,4 @@
-package com.example.senanas.model
+package com.example.senanas.modelDto
 
 import android.os.Parcel
 import android.os.Parcelable

@@ -2,7 +2,7 @@ package com.example.senanas.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.senanas.model.CategoryDto
+import com.example.senanas.modelDto.CategoryDto
 import com.example.senanas.network.user.UserRepository
 import retrofit2.Call
 import retrofit2.Callback

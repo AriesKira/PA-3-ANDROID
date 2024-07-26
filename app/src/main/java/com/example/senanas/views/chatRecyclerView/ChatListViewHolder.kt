@@ -1,16 +1,11 @@
 package com.example.senanas.views.chatRecyclerView
 
-import android.annotation.SuppressLint
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.senanas.Formatter
 import com.example.senanas.R
-import com.example.senanas.model.MessageDto
-import com.example.senanas.model.TicketListDto
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
-import java.util.Locale
+import com.example.senanas.modelDto.MessageDto
 
 class ChatListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     var nameTextView : TextView

@@ -1,7 +1,7 @@
 package com.example.senanas.network.user
 
-import com.example.senanas.model.MessageDto
-import com.example.senanas.model.SendMessageDto
+import com.example.senanas.modelDto.MessageDto
+import com.example.senanas.modelDto.SendMessageDto
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET

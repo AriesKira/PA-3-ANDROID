@@ -4,17 +4,12 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.senanas.data.ChatDataLayerSingleton
-import com.example.senanas.model.SendMessageDto
-import com.example.senanas.viewmodels.ChatViewModel
+import com.example.senanas.modelDto.SendMessageDto
 import com.example.senanas.views.chatRecyclerView.ChatListAdapter
 
 class ChatActivity : AppCompatActivity() {

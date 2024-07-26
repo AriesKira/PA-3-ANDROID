@@ -4,8 +4,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.senanas.R
-import com.example.senanas.model.CategoryDto
-import com.example.senanas.model.TicketListDto
+import com.example.senanas.modelDto.TicketListDto
 
 class TicketListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 

@@ -1,4 +1,4 @@
-package com.example.senanas.model
+package com.example.senanas.modelDto
 
 data class UpdateUserDto(
     val email: String?,
